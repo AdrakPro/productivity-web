@@ -4,11 +4,10 @@ import path from "path";
 
 export default defineConfig({
     plugins: [svelte()],
-    root: "client",
     resolve: {
         alias: {
-            $lib: path.resolve("./client/src/lib"),
-            $components: path.resolve("./client/src/components"),
+            $lib: path.resolve("./src/lib"),
+            $components: path.resolve("./src/components"),
         },
     },
     server: {
@@ -19,6 +18,7 @@ export default defineConfig({
                 changeOrigin: true,
                 secure: false,
             },
+	host: "0.0.0.0",
         },
     },
     build: {
