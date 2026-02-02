@@ -7,7 +7,7 @@ async function setupDatabase() {
     const client = new Client({
         host: config.db.host,
         port: config.db.port,
-        database: "postgres",
+        database: "productivity",
         user: config.db.user,
         password: config.db.password,
     });

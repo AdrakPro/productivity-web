@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import { config } from "./config.js";
 import { initializeDatabase } from "./database/connection.js";
 import { createRoutes } from "./routes/index.js";
+import { runMigrations } from "./database/migrations.js";
 
 const app = express();
 
@@ -51,6 +52,7 @@ async function startServer() {
         const pool = await initializeDatabase();
         const routes = createRoutes(pool);
 
+        runMigrations(pool);
         app.use("/api", routes);
 
         app.get("/health", (req, res) => {
