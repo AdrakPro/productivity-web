@@ -52,7 +52,7 @@ async function startServer() {
         const pool = await initializeDatabase();
         const routes = createRoutes(pool);
 
-        runMigrations(pool);
+        await runMigrations(pool);
         app.use("/api", routes);
 
         app.get("/health", (req, res) => {
